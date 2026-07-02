@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Codexius | Build Beyond Earth</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #05070f;
+  --panel: rgba(255,255,255,0.05);
+  --text: #e6f1ff;
+  --muted: rgba(230,241,255,0.7);
+
+  --primary: #6cf0ff;
+  --secondary: #8b5cf6;
+  --accent: #00ffa3;
+
+  --stroke: rgba(108,240,255,0.25);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Space Grotesk", sans-serif;
+  background: radial-gradient(circle at top, #0b1020, #05070f);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* STARFIELD */
+#stars {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  opacity: 0.5;
+  animation: drift linear infinite;
+}
+
+@keyframes drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(100vh); }
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 50px;
+  background: rgba(10,12,25,0.6);
+  backdrop-filter: blur(12px);
+  z-index: 10;
+}
+
+.logo {
+  font-family: "Orbitron";
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.logo span {
+  color: var(--primary);
+}
+
+nav a {
+  color: var(--text);
+  margin-left: 20px;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+nav a:hover {
+  opacity: 1;
+}
+
+.btn {
+  padding: 8px 14px;
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-family: "Orbitron";
+  font-size: 52px;
+}
+
+.hero span {
+  color: var(--primary);
+}
+
+.hero p {
+  margin-top: 15px;
+  opacity: 0.7;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+.hero-buttons {
+  margin-top: 25px;
+}
+
+.primary-btn,
+.secondary-btn {
+  padding: 12px 20px;
+  margin: 5px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.primary-btn {
+  background: var(--primary);
+  color: black;
+}
+
+.secondary-btn {
+  border: 1px solid var(--primary);
+  color: white;
+}
+
+/* SECTIONS */
+.section {
+  padding: 100px 50px;
+}
+
+.section h2 {
+  font-family: "Orbitron";
+  margin-bottom: 30px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--stroke);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 15px;
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px rgba(108,240,255,0.2);
+  border-color: var(--primary);
+}
+
+.card p {
+  opacity: 0.7;
+  margin-top: 10px;
+}
+
+.highlight {
+  border-color: var(--secondary);
+  box-shadow: 0 0 30px rgba(139,92,246,0.2);
+}
+
+/* SPLIT */
+.split {
+  display: flex;
+  gap: 40px;
+}
+
+.glow-box {
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid var(--primary);
+  box-shadow: 0 0 30px rgba(108,240,255,0.2);
+}
+
+/* CTA */
+.cta {
+  text-align: center;
+  padding: 120px 20px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  opacity: 0.5;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+  .split { flex-direction: column; }
+  .hero h1 { font-size: 32px; }
+  nav { display: none; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- STARFIELD -->
+<div id="stars"></div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="logo">Codexius<span>.</span></div>
+  <nav>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#about">About</a>
+    <a class="btn" href="#contact">Launch</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>Build software that feels <span>interstellar</span>.</h1>
+    <p>Codexius is a space-tech development studio crafting futuristic digital systems, SaaS platforms, and AI tools.</p>
+
+    <div class="hero-buttons">
+      <a class="primary-btn" href="#contact">Start a Build</a>
+      <a class="secondary-btn" href="#features">Explore Systems</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="section">
+  <h2>Core Systems</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Quantum UI Engine</h3>
+      <p>Ultra-fast interfaces designed for motion and clarity.</p>
+    </div>
+
+    <div class="card">
+      <h3>Scalable Architecture</h3>
+      <p>Built to grow from startup to enterprise-level systems.</p>
+    </div>
+
+    <div class="card">
+      <h3>AI Integration Layer</h3>
+      <p>Plug-in automation, chat systems, and smart workflows.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="section">
+  <h2>Launch Tiers</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Starter</h3>
+      <p>$0–$499</p>
+      <p>Landing page + basic setup</p>
+    </div>
+
+    <div class="card highlight">
+      <h3>Orbit</h3>
+      <p>$500–$2,000</p>
+      <p>Full website + branding system</p>
+    </div>
+
+    <div class="card">
+      <h3>Singularity</h3>
+      <p>$2,000+</p>
+      <p>SaaS platform + AI systems</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <h2>Signals From Clients</h2>
+  <div class="grid">
+    <div class="card">
+      <p>"Feels like a NASA control interface."</p>
+    </div>
+    <div class="card">
+      <p>"Conversions doubled after redesign."</p>
+    </div>
+    <div class="card">
+      <p>"Best dev aesthetic I've seen."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section split">
+  <div>
+    <h2>Engineered Like Spacecraft</h2>
+    <p>Every system is built like a mission: precise, scalable, and engineered for performance beyond Earth-level standards.</p>
+  </div>
+
+  <div class="glow-box">
+    Codexius Core Systems Online
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="cta">
+  <h2>Ready to launch your idea?</h2>
+  <p>Let’s build something futuristic together.</p>
+  <br/>
+  <a class="primary-btn" href="mailto:hello@codexius.io">Contact Us</a>
+</section>
+
+<footer>
+  © 2026 Codexius. All rights reserved.
+</footer>
+
+<script>
+/* STARFIELD */
+function createStars() {
+  const stars = document.getElementById("stars");
+
+  for (let i = 0; i < 120; i++) {
+    let star = document.createElement("div");
+    star.className = "star";
+
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.top = Math.random() * 100 + "vh";
+    star.style.animationDuration = (Math.random() * 10 + 5) + "s";
+    star.style.opacity = Math.random();
+
+    stars.appendChild(star);
+  }
+}
+createStars();
+
+/* SCROLL FADE */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = 1;
+      entry.target.style.transform = "translateY(0)";
+    }
+  });
+});
+
+document.querySelectorAll(".card, h2").forEach(el => {
+  el.style.opacity = 0;
+  el.style.transform = "translateY(20px)";
+  el.style.transition = "0.6s ease";
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>
